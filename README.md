@@ -1,4 +1,4 @@
 cashflow-wicket
 ===============
 
-Simple, 'hello world' wicket application
+Simple 'hello world' wicket application
