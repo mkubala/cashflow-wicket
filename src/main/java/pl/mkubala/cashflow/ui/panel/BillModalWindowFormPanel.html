@@ -1,0 +1,23 @@
+<wicket:panel
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.5-strict.dtd">
+
+		<form action="" wicket:id="form">
+			<label for="amount" wicket:id="amountLabel">Amount label</label>
+			<input type="number" id="amount" wicket:id="amount" /><span wicket:id="amountFeedback">error message</span>
+			<br/>
+
+			<label for="createDate" wicket:id="createDateLabel">CreateDate label</label>
+			<span id="createDate" wicket:id="createDate"></span><span wicket:id="createDateFeedback">error message</span>
+			<br/>
+		
+			<label for="description" wicket:id="descriptionLabel">Description label</label>
+			<textarea rows="5" id="description" cols="50" wicket:id="description"></textarea><span wicket:id="descriptionFeedback">error message</span>
+			<br/>
+			<br/>
+			
+			<input type="submit" value="Zapisz" name="save" wicket:id="submitButton" />
+			<a href="#" wicket:id="cancelLink">Anuluj</a>
+			
+		</form>
+
+</wicket:panel>

@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>homeBudgetMonitor</display-name>
+	<display-name>cashflow-wicket</display-name>
 
 	<servlet>
-		<servlet-name>homeBudgetMonitor</servlet-name>
+		<servlet-name>cashflow-wicket</servlet-name>
 		<servlet-class>org.apache.wicket.protocol.http.WicketServlet</servlet-class>
 		<init-param>
 			<param-name>applicationFactoryClassName</param-name>
@@ -24,7 +24,7 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>homeBudgetMonitor</servlet-name>
+		<servlet-name>cashflow-wicket</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 

@@ -15,7 +15,7 @@
 
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
-	<context:component-scan base-package="pl.mkubala.hbm" />
+	<context:component-scan base-package="pl.mkubala.cashflow" />
 
 	<context:annotation-config />
 	<context:spring-configured />
@@ -33,7 +33,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
-				<value>pl.mkubala.hbm.entity</value>
+				<value>pl.mkubala.cashflow.model.entity</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
