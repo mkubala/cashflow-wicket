@@ -2,8 +2,6 @@ package pl.mkubala.cashflow.ui.component;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.IEvent;
-import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
-import org.apache.wicket.markup.html.form.Form;
 
 import pl.mkubala.cashflow.ui.event.AjaxFormCancelEvent;
 import pl.mkubala.cashflow.ui.event.AjaxFormEvent;
@@ -11,7 +9,7 @@ import pl.mkubala.cashflow.ui.event.AjaxFormSubmitEvent;
 import pl.mkubala.cashflow.ui.panel.ModalWindowFormPanel;
 
 @SuppressWarnings("serial")
-public abstract class ModalFormWindow<T> extends ModalWindow {
+public abstract class ModalFormWindow<T> extends CustomModalWindow {
 
     private ModalWindowFormPanel<T> formPanel;
 
@@ -22,14 +20,16 @@ public abstract class ModalFormWindow<T> extends ModalWindow {
     }
 
     public void init() {
-        // formPanel = new ModalWindowFormPanel<T>(this, buildForm("form"));
         formPanel = buildFormPanel(getContentId());
         setContent(formPanel);
     }
 
-    protected abstract ModalWindowFormPanel<T> buildFormPanel(final String id);
+    public void show(final AjaxRequestTarget target, final T entity) {
+        setFormEntity(entity);
+        super.show(target);
+    }
 
-    protected abstract Form<T> buildForm(final String formId);
+    protected abstract ModalWindowFormPanel<T> buildFormPanel(final String id);
 
     public void setFormEntity(final T entity) {
         if (formPanel == null) {

@@ -1,0 +1,17 @@
+div.ribbon {
+	background-color: #333333;
+    height: 3em;
+    line-height: 3em;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+}
+
+div.ribbonItem {
+	border: 1px solid #555;
+	margin-right: 10px;
+	background-color: #444;
+	border-radius: 5px; 
+}

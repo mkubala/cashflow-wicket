@@ -2,8 +2,10 @@ package pl.mkubala.cashflow.ui.page;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import pl.mkubala.cashflow.model.entity.Bill;
 import pl.mkubala.cashflow.ui.component.BillModalWindow;
 import pl.mkubala.cashflow.ui.panel.BillsPanel;
 
@@ -26,7 +28,13 @@ public class FormPage extends BasePage {
 
             @Override
             public void onClick(final AjaxRequestTarget target) {
-                billFormWindow.show(target);
+                billFormWindow.show(target, new Bill());
+            }
+
+            @Override
+            protected void onComponentTag(final ComponentTag tag) {
+                super.onComponentTag(tag);
+                tag.put("class", "button create");
             }
         });
 

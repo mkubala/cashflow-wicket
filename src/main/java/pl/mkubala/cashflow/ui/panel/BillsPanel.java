@@ -110,7 +110,7 @@ public class BillsPanel extends Panel {
         return new TextFilteredPropertyColumn<Bill, String>(new ResourceModel(key), sortProperty, propertyExpression);
     }
 
-    public void setBillFormWindow(final ModalFormWindow billFormWindow) {
+    public void setBillFormWindow(final ModalFormWindow<Bill> billFormWindow) {
         this.relatedModalFormWindow = billFormWindow;
     }
 
@@ -168,8 +168,8 @@ public class BillsPanel extends Panel {
 
                 @Override
                 public void onClick(final AjaxRequestTarget target) {
-                    relatedModalFormWindow.setFormEntity((Bill) ActionPanel.this.getDefaultModelObject());
-                    relatedModalFormWindow.show(target);
+                    Bill currentBill = (Bill) ActionPanel.this.getDefaultModelObject();
+                    relatedModalFormWindow.show(target, currentBill);
                 }
             });
         }

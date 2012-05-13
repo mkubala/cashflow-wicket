@@ -1,0 +1,50 @@
+input,
+a.button,
+textarea {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px 3px 3px 3px;
+	line-height: 1.5em;
+	padding: 3px 5px;
+	text-decoration: none;
+	color: #000;
+}
+
+table thead * input,
+table thead * a.button,
+table thead * textarea {
+	border-color: #000;
+}
+
+input[type=submit],
+a.button {
+	background-color: #dfdfdf;
+	padding: 3px 5px;
+}
+
+input[type=submit].create,
+a.button.create {
+	background-color: #259107;
+	color: #fff;
+}
+
+table thead * input[type=submit],
+table thead * a.button {
+	background-color: #666;
+	color: #eee;
+}
+
+input[type=submit]:hover,
+a.button:hover {
+	background-color: #fcfcfc;
+}
+
+input[type=submit].create:hover,
+a.button.create:hover {
+	background-color: #29B304;
+}
+
+table thead * input[type=submit]:hover,
+table thead * a.button:hover {
+	background-color: #888;
+}
