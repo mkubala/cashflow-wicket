@@ -6,8 +6,7 @@ table {
 	margin: 10px 0;
 }
 
-table thead,
-table tfoot {
+table thead,table tfoot {
 	background-color: #333;
 	color: #eaeaea;
 }
@@ -35,17 +34,51 @@ table * td {
 	border-collapse: collapse;
 }
 
-
-table thead * th.wicket_orderUp,
-table thead * th.wicket_orderDown {
-	border-top: 3px solid orange;
+table thead td,table tfoot td {
+	border-left: 1px dotted #666;
+	text-align: center;
 }
 
-table thead td,
-table tfoot td {
-	border-left: 1px dotted #666;
+table thead tr.headers th {
+	border-top: 2px solid black;
+	background-image: linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% );
+	background-image: -o-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% );
+	background-image: -moz-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% );
+	background-image: -webkit-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% );
+	background-image: -ms-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% );
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(51, 51
+		, 51) ), color-stop(0.71, rgb(34, 34, 34) ),
+		color-stop(1, rgb(27, 27, 27) ) );
+}
+
+table thead tr.headers th.wicket_orderUp,
+table thead tr.headers th.wicket_orderDown {
+	border-top: 2px solid orange;
+	background-image: linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(51, 51, 51) 33%, rgb(94, 77, 11) 100% );
+	background-image: -o-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(51, 51, 51) 33%, rgb(94, 77, 11) 100% );
+	background-image: -moz-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(51, 51, 51) 33%, rgb(94, 77, 11) 100% );
+	background-image: -webkit-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(51, 51, 51) 33%, rgb(94, 77, 11) 100% );
+	background-image: -ms-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(51, 51, 51) 33%, rgb(94, 77, 11) 100% );
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(51, 51
+		, 51) ), color-stop(0.33, rgb(51, 51, 51) ),
+		color-stop(1, rgb(94, 77, 11) ) );
 }
 
 table tbody tr td {
 	border-left: 1px dotted #ccc;
+}
+
+table thead input,table thead a.button,table thead textarea {
+	padding: 3px;
+	margin: 0px;
 }

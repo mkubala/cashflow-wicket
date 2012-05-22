@@ -1,50 +1,95 @@
-input,
-a.button,
-textarea {
-	background-color: #FFFFFF;
-	border: 1px solid #CCCCCC;
-	border-radius: 3px 3px 3px 3px;
-	line-height: 1.5em;
-	padding: 3px 5px;
-	text-decoration: none;
-	color: #000;
+label {
+	float: left;
+	margin: 9px;
+	width: 90px;
+	clear: left;
+	text-align: right;
 }
 
-table thead * input,
-table thead * a.button,
-table thead * textarea {
+input,a.button,textarea {
+	background-color: #FFFFFF;
+	border: 1px solid #c3c3c3;
+	border-radius: 3px;
+	line-height: 1.5em;
+	padding: 5px 5px;
+	margin: 5px;
+	text-decoration: none;
+	color: #000;
+	box-shadow: inset 1px 1px 4px #ccc;
+}
+
+input.error,
+textarea.error {
+	border: 1px solid red;
+	box-shadow: inset 1px 1px 4px #ccc, 0 0 5px red;
+}
+
+input:focus,
+textarea:focus {
+	box-shadow: inset 1px 1px 4px #ccc, 0 0 5px orange;
+}
+
+table thead * input,table thead * a.button,table thead * textarea {
 	border-color: #000;
 }
 
-input[type=submit],
-a.button {
-	background-color: #dfdfdf;
-	padding: 3px 5px;
+input[type=submit],a.button {
+	box-shadow: none;
+	background-image: linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%);
+	background-image: -o-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%);
+	background-image: -moz-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%);
+	background-image: -webkit-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%);
+	background-image: -ms-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #333333),
+		color-stop(0.78, #555555), color-stop(1, #666666) );
+	color: #fff;
+	border: 0;
+	cursor: pointer;
 }
 
-input[type=submit].create,
-a.button.create {
+input[type=submit].create,a.button.create {
 	background-color: #259107;
 	color: #fff;
+	text-shadow: 0 0 5px #000;
 }
 
-table thead * input[type=submit],
-table thead * a.button {
+table thead * input[type=submit],table thead * a.button {
 	background-color: #666;
 	color: #eee;
+	text-shadow: 0 0 5px #000;
 }
 
-input[type=submit]:hover,
-a.button:hover {
-	background-color: #fcfcfc;
+input[type=submit]:hover,a.button:hover {
+	box-shadow: inset 0 0 4px orange;
 }
 
-input[type=submit].create:hover,
-a.button.create:hover {
+input[type=submit].create:hover,a.button.create:hover {
 	background-color: #29B304;
 }
 
-table thead * input[type=submit]:hover,
-table thead * a.button:hover {
+table thead * input[type=submit]:hover,table thead * a.button:hover {
 	background-color: #888;
+}
+
+div.wrapper {
+	padding: 10px;
+}
+
+form div.controls {
+	border-top: 1px solid #bababa;
+	background-image: linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -o-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -moz-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -webkit-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -ms-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.03, rgb(234
+		, 234, 234) ), color-stop(0.75, rgb(234, 234, 234) ),
+		color-stop(1, rgb(211, 211, 211) ) );
+	background-image: linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
 }

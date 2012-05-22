@@ -23,7 +23,7 @@ public class SortableBillDataProvider extends SortableDataProvider<Bill> impleme
     private Bill filterState = new Bill(null, null, null);
 
     public SortableBillDataProvider() {
-        setSort("description", DESCENDING);
+        setSort("createDate", DESCENDING);
     }
 
     @Override

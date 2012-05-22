@@ -19,6 +19,9 @@ public class DateConverterServiceImpl implements DateConverterService {
 
     @Override
     public String convert(final Date date) {
+        if (date == null) {
+            return "";
+        }
         return shortConverter.convertToString(date, LocaleContextHolder.getLocale());
     }
 

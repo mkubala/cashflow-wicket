@@ -6,10 +6,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.event.Broadcast;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.NumberTextField;
-import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -25,6 +22,8 @@ public class BillForm extends Form<Bill> {
 
     private static final long serialVersionUID = 1L;
 
+    private final CompoundPropertyModel<Bill> formModel;
+
     @SpringBean
     private BillServiceImpl billService;
 
@@ -34,41 +33,26 @@ public class BillForm extends Form<Bill> {
 
     public BillForm(final String id, final Bill bill) {
         super(id, new CompoundPropertyModel<Bill>(new Model<Bill>(bill)));
+        formModel = (CompoundPropertyModel<Bill>) getModel();
+        setOutputMarkupId(true);
         initGui();
     }
 
     protected void initGui() {
-        setOutputMarkupId(true);
-
-        Label amountLabel = new Label("amountLabel", "WartoÊç");
-        add(amountLabel);
-
-        Label createDateLabel = new Label("createDateLabel", "Data");
-        add(createDateLabel);
-
-        Label valueLabel = new Label("descriptionLabel", "Opis");
-        add(valueLabel);
-
-        final NumberTextField<BigDecimal> amount = new NumberTextField<BigDecimal>("amount");
-        amount.setRequired(true);
+        final CustomTextField<BigDecimal> amount = new CustomTextField<BigDecimal>("amount", new Model<String>("WartoÊç"),
+                getFormModel());
         add(amount);
-        add(new FeedbackLabel("amountFeedback", amount));
 
-        final ShortDateField createDate = new ShortDateField("createDate");
-        createDate.setRequired(true);
+        final CustomShortDateField createDate = new CustomShortDateField("createDate", new Model<String>("Data"), getFormModel());
+        createDate.getComponent().setRequired(true);
         add(createDate);
 
-        FeedbackLabel createDateFeedback = new FeedbackLabel("createDateFeedback", createDate);
-        add(createDateFeedback);
-
-        final TextArea<String> description = new TextArea<String>("description");
-        description.setRequired(true);
-        StringValidator valueValidator = new StringValidator.LengthBetweenValidator(2, 4096);
-        description.add(valueValidator);
+        final CustomTextAreaField<String> description = new CustomTextAreaField<String>("description", new Model<String>("Opis"),
+                getFormModel());
+        description.getComponent().setRequired(true);
+        final StringValidator valueValidator = new StringValidator.LengthBetweenValidator(2, 4096);
+        description.getComponent().add(valueValidator);
         add(description);
-
-        FeedbackLabel feedbackLabel = new FeedbackLabel("descriptionFeedback", description);
-        add(feedbackLabel);
 
         add(new AjaxButton("submitButton") {
 
@@ -79,13 +63,13 @@ public class BillForm extends Form<Bill> {
                 super.onSubmit();
                 billService.saveBill(getBillObject());
                 getParent().setDefaultModelObject(null);
-                send(getPage(), Broadcast.BREADTH, new AjaxFormSubmitEvent(target));
+                send(BillForm.this, Broadcast.BREADTH, new AjaxFormSubmitEvent(target));
             }
 
             @Override
             protected void onError(final AjaxRequestTarget target, final Form<?> form) {
                 super.onError();
-                send(getPage(), Broadcast.BREADTH, new AjaxFormErrorEvent(target));
+                send(BillForm.this, Broadcast.BREADTH, new AjaxFormErrorEvent(target));
             }
         });
 
@@ -96,10 +80,14 @@ public class BillForm extends Form<Bill> {
             @Override
             public void onClick(final AjaxRequestTarget target) {
                 getParent().setDefaultModelObject(null);
-                send(getPage(), Broadcast.BREADTH, new AjaxFormCancelEvent(target));
+                send(BillForm.this.findParent(CustomModalWindow.class), Broadcast.BREADTH, new AjaxFormCancelEvent(target));
             }
 
         });
+    }
+
+    protected CompoundPropertyModel<Bill> getFormModel() {
+        return formModel;
     }
 
     private Bill getBillObject() {

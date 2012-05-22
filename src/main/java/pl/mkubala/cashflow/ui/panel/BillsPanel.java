@@ -60,9 +60,8 @@ public class BillsPanel extends Panel {
     private void initGui() {
         dataProvider = new SortableBillDataProvider();
 
+        @SuppressWarnings("serial")
         final FilterForm<Bill> form = new FilterForm<Bill>("filter-form", dataProvider) {
-
-            private static final long serialVersionUID = 1L;
 
             @Override
             protected void onSubmit() {
@@ -97,7 +96,7 @@ public class BillsPanel extends Panel {
     }
 
     private List<IColumn<Bill>> createBillsColumns() {
-        List<IColumn<Bill>> billColumns = Lists.newArrayList();
+        final List<IColumn<Bill>> billColumns = Lists.newArrayList();
         billColumns.add(new BillActionsColumn());
         billColumns.add(new DateFilteredPropertyColumn());
         billColumns.add(createFilteredColumn("amount", "amount", "amount"));
@@ -106,8 +105,8 @@ public class BillsPanel extends Panel {
     }
 
     protected TextFilteredPropertyColumn<Bill, String> createFilteredColumn(final String key, final String sortProperty,
-            final String propertyExpression) {
-        return new TextFilteredPropertyColumn<Bill, String>(new ResourceModel(key), sortProperty, propertyExpression);
+            final String propertyExpr) {
+        return new TextFilteredPropertyColumn<Bill, String>(new ResourceModel(key), sortProperty, propertyExpr);
     }
 
     public void setBillFormWindow(final ModalFormWindow<Bill> billFormWindow) {
@@ -123,15 +122,15 @@ public class BillsPanel extends Panel {
         }
 
         @Override
-        public void populateItem(Item<ICellPopulator<Bill>> item, String componentId, IModel<Bill> rowModel) {
-            Date createDate = rowModel.getObject().getCreateDate();
-            Model<String> createDateModel = new Model<String>(dateConverterService.convert(createDate));
+        public void populateItem(final Item<ICellPopulator<Bill>> item, final String componentId, final IModel<Bill> rowModel) {
+            final Date createDate = rowModel.getObject().getCreateDate();
+            final Model<String> createDateModel = new Model<String>(dateConverterService.convert(createDate));
             item.add(new Label(componentId, createDateModel));
         }
 
         @Override
         public Component getFilter(final String componentId, final FilterForm<?> form) {
-            IModel<Date> model = new PropertyModel<Date>(form.getDefaultModel(), "createDate");
+            final IModel<Date> model = new PropertyModel<Date>(form.getDefaultModel(), "createDate");
             return new ShortDateField(componentId, model);
         }
 
@@ -168,7 +167,7 @@ public class BillsPanel extends Panel {
 
                 @Override
                 public void onClick(final AjaxRequestTarget target) {
-                    Bill currentBill = (Bill) ActionPanel.this.getDefaultModelObject();
+                    final Bill currentBill = (Bill) ActionPanel.this.getDefaultModelObject();
                     relatedModalFormWindow.show(target, currentBill);
                 }
             });
