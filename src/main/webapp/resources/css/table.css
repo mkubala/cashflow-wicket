@@ -13,6 +13,8 @@ table thead,table tfoot {
 
 table thead * a {
 	color: #ffffff;
+	display: inline-block;
+	width: 100%;
 }
 
 table tbody tr.odd {

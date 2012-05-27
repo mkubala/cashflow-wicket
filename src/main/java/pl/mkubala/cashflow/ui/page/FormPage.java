@@ -6,7 +6,8 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import pl.mkubala.cashflow.model.entity.Bill;
-import pl.mkubala.cashflow.ui.component.BillModalWindow;
+import pl.mkubala.cashflow.ui.component.BillModalFormPanel;
+import pl.mkubala.cashflow.ui.component.ModalFormWindow;
 import pl.mkubala.cashflow.ui.panel.BillsPanel;
 
 public class FormPage extends BasePage {
@@ -19,8 +20,9 @@ public class FormPage extends BasePage {
     }
 
     private void initGui() {
-        final BillModalWindow billFormWindow = new BillModalWindow("window");
-        billFormWindow.init();
+        final BillModalFormPanel billModalFormPanel = new BillModalFormPanel("content");
+        billModalFormPanel.initGui();
+        final ModalFormWindow<Bill> billFormWindow = new ModalFormWindow<Bill>("window", billModalFormPanel);
 
         add(new AjaxLink<Void>("showWindow") {
 
@@ -28,7 +30,7 @@ public class FormPage extends BasePage {
 
             @Override
             public void onClick(final AjaxRequestTarget target) {
-                billFormWindow.show(target, new Bill());
+                billFormWindow.show(target, "Nowy rachunek", new Bill());
             }
 
             @Override

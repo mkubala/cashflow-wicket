@@ -10,6 +10,7 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxFallbackDefaultDataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.NavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterForm;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilteredAbstractColumn;
@@ -88,6 +89,8 @@ public class BillsPanel extends Panel {
 
         };
         bills.addTopToolbar(new FilterToolbar(bills, form, dataProvider));
+
+        bills.addBottomToolbar(new NavigationToolbar(bills));
 
         bills.setOutputMarkupId(true);
 
@@ -168,7 +171,7 @@ public class BillsPanel extends Panel {
                 @Override
                 public void onClick(final AjaxRequestTarget target) {
                     final Bill currentBill = (Bill) ActionPanel.this.getDefaultModelObject();
-                    relatedModalFormWindow.show(target, currentBill);
+                    relatedModalFormWindow.show(target, "edytuj rachunek", currentBill);
                 }
             });
         }

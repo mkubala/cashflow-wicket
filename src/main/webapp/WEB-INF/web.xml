@@ -5,6 +5,7 @@
 
 	<display-name>cashflow-wicket</display-name>
 
+<!-- https://issues.apache.org/jira/browse/WICKET-4552 -->
 <!-- 	<servlet> -->
 <!-- 		<servlet-name>cashflow-wicket</servlet-name> -->
 <!-- 		<servlet-class>org.apache.wicket.protocol.http.WicketServlet</servlet-class> -->

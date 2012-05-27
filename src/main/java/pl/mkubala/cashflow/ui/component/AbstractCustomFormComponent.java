@@ -2,8 +2,6 @@ package pl.mkubala.cashflow.ui.component;
 
 import java.io.Serializable;
 
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.IFormVisitorParticipant;
@@ -58,22 +56,6 @@ public abstract class AbstractCustomFormComponent<T extends Serializable> extend
     @Override
     public boolean processChildren() {
         return true;
-    }
-
-    class ComponentWrapper extends WebMarkupContainer {
-
-        private static final long serialVersionUID = 1L;
-
-        public ComponentWrapper(final String id) {
-            super(id);
-        }
-
-        @Override
-        protected void onComponentTag(final ComponentTag tag) {
-            super.onComponentTag(tag);
-            tag.getAttributes().put("id", getMarkupId() + "-component-wrapper");
-        }
-
     }
 
 }

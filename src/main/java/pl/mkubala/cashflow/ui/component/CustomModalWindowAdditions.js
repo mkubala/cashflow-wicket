@@ -1,30 +1,4 @@
-//if (typeof(Wicket) == "undefined") {
-//	Wicket = { };
-//}
-//
-//
-//if (Wicket.Class == null) {
-//	Wicket.Class = {
-//		create: function() {
-//			return function() {
-//				this.initialize.apply(this, arguments);
-//			}
-//		}
-//	};
-//}
-//
-//if (Wicket.Object == null) {
-//	Wicket.Object = { };
-//}
-//
-//if (Wicket.Object.extend == null) {
-//	Wicket.Object.extend = function(destination, source) {
-//		for (property in source) {
-//			destination[property] = source[property];
-//		}
-//		return destination;
-//	}
-//}
+
 /* Override Wicket.Window.autoSizeWindow method */
 Wicket.Window.prototype.autoSizeWindow = function() {
 		var targetWindow = this.window; 
@@ -43,5 +17,4 @@ Wicket.Window.prototype.autoSizeWindow = function() {
 		targetWindow.style.width = newWidth;	
 
 		targetContent.style.overflow = 'auto';
-	}
 }

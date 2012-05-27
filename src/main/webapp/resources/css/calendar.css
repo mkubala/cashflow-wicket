@@ -1,0 +1,111 @@
+.yui-calcontainer {
+	box-shadow: 0 0 12px #444;
+	padding: 0 !important;
+}
+
+.yui-calcontainer .title {
+	height: 12px !important;
+	margin: 0 !important;
+	background: none repeat scroll 0 0 #333 !important;
+	background-image: linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% ) !important;
+	background-image: -o-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% ) !important;
+	background-image: -moz-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% ) !important;
+	background-image: -webkit-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% ) !important;
+	background-image: -ms-linear-gradient(bottom, rgb(51, 51, 51) 0%,
+		rgb(34, 34, 34) 71%, rgb(27, 27, 27) 100% ) !important;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(51, 51
+		, 51) ), color-stop(0.71, rgb(34, 34, 34) ),
+		color-stop(1, rgb(27, 27, 27) ) ) !important;
+}
+
+.yui-calcontainer .calclose {
+	height: 12px !important;
+	width: 12px !important;
+	overflow: hidden !important;
+	background: none repeat scroll 0 0 #aa0000 !important;
+	box-shadow: 0 0 3px #000 inset;
+	border-radius: 6px;
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.yui-calcontainer .calclose:hover {
+	background-color: #dd0000 !important;
+}
+
+.yui-calendar {
+	border: 0 !important;
+	border-collapse: separate !important;
+}
+
+.yui-calendar .calheader {
+	color: #333;
+}
+
+.yui-calendar .calnavleft {
+	margin-left: 0 !important;
+	left: 0 !important;
+}
+
+.yui-calendar .calnavright {
+	margin-right: 0 !important;
+	right: 0 !important;
+}
+
+.yui-calendar .calheader,
+.yui-calendar .calweekdaycell {
+	font-weight: normal !important;
+}
+
+.yui-calendar thead {
+	border-top: 1px solid #bababa;
+	background-image: linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -o-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -moz-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -webkit-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -ms-linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.03, rgb(234
+		, 234, 234) ), color-stop(0.75, rgb(234, 234, 234) ),
+		color-stop(1, rgb(211, 211, 211) ) );
+	background-image: linear-gradient(bottom, rgb(234, 234, 234) 3%,
+		rgb(234, 234, 234) 75%, rgb(211, 211, 211) 100% );
+}
+
+.yui-calendar td.calcell.today {
+	background-color: #eee !important;
+	border-color: #aaa !important;
+	box-shadow: inset 0 0 4px #bbb;
+}
+
+.yui-calendar td.calcell.today a {
+	background-color: transparent !important;
+	font-weight: bold !important;
+}
+
+.yui-calendar td.calcell.selected {
+	background: none repeat scroll 0 0 transparent !important;
+	border-color: #aaa !important;
+	background-image: linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%) !important;
+	background-image: -o-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%) !important;
+	background-image: -moz-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%) !important;
+	background-image: -webkit-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%) !important;
+	background-image: -ms-linear-gradient(bottom, #333333 0%, #555555 78%, #666666 100%) !important;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #333333),
+		color-stop(0.78, #555555), color-stop(1, #666666) ) !important;
+	color: #fff !important;
+}
+
+.yui-calendar td.calcell.selected a {
+	background-color: transparent !important;
+	color: #fff !important;
+	font-weight: bold !important;
+}

@@ -27,7 +27,7 @@ public class FeedbackLabel extends Label {
 
     private final FormComponent<? extends Serializable> formComponent;
 
-    private final AttributeModifier errorAttributeModifier = new AddErrorClassAttributeModifier("class", new Model<String>(
+    private static final AttributeModifier ERROR_ATTR_MODIFIER = new AddErrorClassAttributeModifier("class", new Model<String>(
             "error"));
 
     /**
@@ -90,7 +90,7 @@ public class FeedbackLabel extends Label {
     protected void onAjaxFormError(final AjaxFormErrorEvent event) {
         if (formComponent.hasFeedbackMessage()) {
             setDefaultModelObject(formComponent.getFeedbackMessage().getMessage().toString());
-            formComponent.add(errorAttributeModifier);
+            formComponent.add(ERROR_ATTR_MODIFIER);
         } else {
             clear();
         }
@@ -99,8 +99,8 @@ public class FeedbackLabel extends Label {
     }
 
     protected void clear() {
-        if (formComponent.getBehaviors().contains(errorAttributeModifier)) {
-            formComponent.remove(errorAttributeModifier);
+        if (formComponent.getBehaviors().contains(ERROR_ATTR_MODIFIER)) {
+            formComponent.remove(ERROR_ATTR_MODIFIER);
         }
         setDefaultModelObject("");
     }
@@ -132,20 +132,4 @@ public class FeedbackLabel extends Label {
             return newValue;
         }
     }
-
-    // public static class RemoveErrorClassAttributeModifier extends AttributeModifier {
-    //
-    // public RemoveErrorClassAttributeModifier(final String attribute, final IModel<?> replaceModel) {
-    // super(attribute, replaceModel);
-    // }
-    //
-    // @Override
-    // protected String newValue(final String currentValue, final String valueToDelete) {
-    // String newValue = currentValue;
-    // if (StringUtils.contains(currentValue, valueToDelete)) {
-    // newValue = StringUtils.remove(currentValue, valueToDelete);
-    // }
-    // return newValue;
-    // }
-    // }
 }

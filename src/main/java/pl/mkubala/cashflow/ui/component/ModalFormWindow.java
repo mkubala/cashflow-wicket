@@ -2,40 +2,37 @@ package pl.mkubala.cashflow.ui.component;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.IEvent;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 
 import pl.mkubala.cashflow.ui.event.AjaxFormCancelEvent;
 import pl.mkubala.cashflow.ui.event.AjaxFormEvent;
 import pl.mkubala.cashflow.ui.event.AjaxFormSubmitEvent;
-import pl.mkubala.cashflow.ui.panel.ModalWindowFormPanel;
+import pl.mkubala.cashflow.ui.panel.AbstractModalFormPanel;
 
-@SuppressWarnings("serial")
-public abstract class ModalFormWindow<T> extends CustomModalWindow {
+public class ModalFormWindow<T> extends CustomModalWindow {
 
-    private ModalWindowFormPanel<T> formPanel;
+    private static final long serialVersionUID = 1L;
 
-    public ModalFormWindow(final String id) {
+    private final AbstractModalFormPanel<T> modalFormPanel;
+
+    public ModalFormWindow(final String id, final AbstractModalFormPanel<T> modalFormPanel) {
         super(id);
         setCookieName(id);
         setAutoSize(true);
+        modalFormPanel.setMarkupId(getContentId());
+        this.modalFormPanel = modalFormPanel;
+        setContent(this.modalFormPanel);
     }
 
-    public void init() {
-        formPanel = buildFormPanel(getContentId());
-        setContent(formPanel);
+    public void show(final AjaxRequestTarget target, final String title, final T entity) {
+        show(target, new Model<String>(title), entity);
     }
 
-    public void show(final AjaxRequestTarget target, final T entity) {
-        setFormEntity(entity);
+    public void show(final AjaxRequestTarget target, final IModel<String> title, final T entity) {
+        modalFormPanel.setDefaultModelObject(entity);
+        setTitle(title);
         super.show(target);
-    }
-
-    protected abstract ModalWindowFormPanel<T> buildFormPanel(final String id);
-
-    public void setFormEntity(final T entity) {
-        if (formPanel == null) {
-            init();
-        }
-        formPanel.setFormEntity(entity);
     }
 
     protected void onFormSubmit(final AjaxRequestTarget target) {

@@ -47,9 +47,8 @@ public class CustomModalWindow extends ModalWindow {
     @Override
     public void renderHead(final IHeaderResponse response) {
         super.renderHead(response);
-        final ResourceReference additionalJsReference = new JavaScriptResourceReference(CustomModalWindow.class,
-                "CustomModalWindowAdditions.js");
-        response.renderJavaScriptReference(additionalJsReference);
+        response.renderJavaScriptReference(new JavaScriptResourceReference(CustomModalWindow.class,
+                "CustomModalWindowAdditions.js"));
     }
 
 }
