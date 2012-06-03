@@ -10,11 +10,12 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 
 import pl.mkubala.cashflow.ui.component.CustomModalWindow;
+import pl.mkubala.cashflow.ui.component.Initializable;
 import pl.mkubala.cashflow.ui.event.AjaxFormCancelEvent;
 import pl.mkubala.cashflow.ui.event.AjaxFormErrorEvent;
 import pl.mkubala.cashflow.ui.event.AjaxFormSubmitEvent;
 
-public abstract class AbstractModalFormPanel<T> extends Panel {
+public abstract class AbstractModalFormPanel<T> extends Panel implements Initializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,6 +24,8 @@ public abstract class AbstractModalFormPanel<T> extends Panel {
     public AbstractModalFormPanel(final String id, final CompoundPropertyModel<T> model) {
         super(id, model);
         form = new Form<T>("form", model);
+        add(form);
+
         setOutputMarkupId(true);
     }
 
@@ -43,10 +46,13 @@ public abstract class AbstractModalFormPanel<T> extends Panel {
     protected void onModalFormCancel(final AjaxRequestTarget target) {
     }
 
-    public void initGui() {
+    @Override
+    public void initialize() {
         addControls();
-        add(getForm());
+        addComponents(getForm());
     }
+
+    protected abstract void addComponents(final Form<T> form);
 
     protected void addControls() {
         form.add(new AjaxButton("submitButton") {
@@ -57,7 +63,7 @@ public abstract class AbstractModalFormPanel<T> extends Panel {
             protected void onSubmit(final AjaxRequestTarget target, final Form<?> form) {
                 super.onSubmit();
                 AbstractModalFormPanel.this.onModalFormSubmit(target, form);
-                send(AbstractModalFormPanel.this.findParent(ModalWindow.class).getParent(), Broadcast.BREADTH,
+                send(AbstractModalFormPanel.this.findParent(ModalWindow.class), Broadcast.BREADTH,
                         new AjaxFormSubmitEvent(target));
             }
 

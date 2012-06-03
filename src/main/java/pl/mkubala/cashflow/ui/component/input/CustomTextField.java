@@ -1,4 +1,4 @@
-package pl.mkubala.cashflow.ui.component;
+package pl.mkubala.cashflow.ui.component.input;
 
 import java.io.Serializable;
 
@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import pl.mkubala.cashflow.ui.component.AbstractCustomFormComponent;
 
 public class CustomTextField<T extends Serializable> extends AbstractCustomFormComponent<T> {
 

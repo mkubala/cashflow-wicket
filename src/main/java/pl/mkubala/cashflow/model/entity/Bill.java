@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.wicket.IClusterable;
 
 @Entity
-public class Bill implements IClusterable, Comparable<Bill> {
+public class Bill implements IClusterable, Comparable<Bill>, pl.mkubala.cashflow.model.entity.Entity {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +40,7 @@ public class Bill implements IClusterable, Comparable<Bill> {
         this.description = description;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

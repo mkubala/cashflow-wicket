@@ -4,8 +4,6 @@ import static org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOr
 
 import java.util.Iterator;
 
-import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.IFilterStateLocator;
-import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -15,15 +13,20 @@ import pl.mkubala.cashflow.service.BillService;
 
 @SuppressWarnings("serial")
 @Configurable
-public class SortableBillDataProvider extends SortableDataProvider<Bill> implements IFilterStateLocator<Bill> {
+public class BillDataProvider extends SortableFilterableDataProvider<Bill> {
 
     @Autowired
     private transient BillService billService;
 
     private Bill filterState = new Bill(null, null, null);
 
-    public SortableBillDataProvider() {
+    public BillDataProvider() {
         setSort("createDate", DESCENDING);
+    }
+
+    @Override
+    public Bill get(long id) {
+        return billService.get(id);
     }
 
     @Override

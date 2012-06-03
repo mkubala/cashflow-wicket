@@ -1,4 +1,4 @@
-package pl.mkubala.cashflow.ui.component;
+package pl.mkubala.cashflow.ui.component.input;
 
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
 

@@ -11,6 +11,9 @@ import org.apache.wicket.validation.validator.StringValidator;
 
 import pl.mkubala.cashflow.model.entity.Bill;
 import pl.mkubala.cashflow.service.BillServiceImpl;
+import pl.mkubala.cashflow.ui.component.input.CustomShortDateField;
+import pl.mkubala.cashflow.ui.component.input.CustomTextAreaField;
+import pl.mkubala.cashflow.ui.component.input.CustomTextField;
 import pl.mkubala.cashflow.ui.panel.AbstractModalFormPanel;
 
 public class BillModalFormPanel extends AbstractModalFormPanel<Bill> {
@@ -29,22 +32,21 @@ public class BillModalFormPanel extends AbstractModalFormPanel<Bill> {
     }
 
     @Override
-    public void initGui() {
-        super.initGui();
+    protected void addComponents(final Form<Bill> form) {
         final CustomTextField<BigDecimal> amount = new CustomTextField<BigDecimal>("amount", new Model<String>("WartoÊç"),
                 getFormModel());
-        getForm().add(amount);
+        form.add(amount);
 
         final CustomShortDateField createDate = new CustomShortDateField("createDate", new Model<String>("Data"), getFormModel());
         createDate.getComponent().setRequired(true);
-        getForm().add(createDate);
+        form.add(createDate);
 
         final CustomTextAreaField<String> description = new CustomTextAreaField<String>("description", new Model<String>("Opis"),
                 getFormModel());
         description.getComponent().setRequired(true);
         final StringValidator valueValidator = new StringValidator.LengthBetweenValidator(2, 4096);
         description.getComponent().add(valueValidator);
-        getForm().add(description);
+        form.add(description);
     }
 
     @Override

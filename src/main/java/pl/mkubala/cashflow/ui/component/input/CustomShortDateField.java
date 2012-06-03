@@ -1,10 +1,12 @@
-package pl.mkubala.cashflow.ui.component;
+package pl.mkubala.cashflow.ui.component.input;
 
 import java.util.Date;
 
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
+import pl.mkubala.cashflow.ui.component.AbstractCustomFormComponent;
 
 public class CustomShortDateField extends AbstractCustomFormComponent<Date> {
 

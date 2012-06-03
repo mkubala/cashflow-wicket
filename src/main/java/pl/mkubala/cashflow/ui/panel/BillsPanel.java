@@ -26,16 +26,17 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import pl.mkubala.cashflow.model.SortableBillDataProvider;
+import pl.mkubala.cashflow.model.BillDataProvider;
 import pl.mkubala.cashflow.model.entity.Bill;
 import pl.mkubala.cashflow.service.DateConverterService;
+import pl.mkubala.cashflow.ui.component.Initializable;
 import pl.mkubala.cashflow.ui.component.ModalFormWindow;
-import pl.mkubala.cashflow.ui.component.ShortDateField;
+import pl.mkubala.cashflow.ui.component.input.ShortDateField;
 import pl.mkubala.cashflow.ui.event.AjaxFormSubmitEvent;
 
 import com.google.common.collect.Lists;
 
-public class BillsPanel extends Panel {
+public class BillsPanel extends Panel implements Initializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -43,23 +44,26 @@ public class BillsPanel extends Panel {
 
     private AjaxFallbackDefaultDataTable<Bill> bills;
 
-    private SortableBillDataProvider dataProvider;
+    private BillDataProvider dataProvider;
 
     @SpringBean
     private DateConverterService dateConverterService;
 
     public BillsPanel(final String id) {
         super(id);
-        initGui();
     }
 
     public BillsPanel(final String id, final IModel<?> model) {
         super(id, model);
+    }
+
+    @Override
+    public void initialize() {
         initGui();
     }
 
     private void initGui() {
-        dataProvider = new SortableBillDataProvider();
+        dataProvider = new BillDataProvider();
 
         @SuppressWarnings("serial")
         final FilterForm<Bill> form = new FilterForm<Bill>("filter-form", dataProvider) {
@@ -70,7 +74,7 @@ public class BillsPanel extends Panel {
             }
         };
 
-        bills = new AjaxFallbackDefaultDataTable<Bill>("billsTable", createBillsColumns(), dataProvider, 10) {
+        bills = new AjaxFallbackDefaultDataTable<Bill>("bills", createBillsColumns(), dataProvider, 10) {
 
             private static final long serialVersionUID = 1L;
 

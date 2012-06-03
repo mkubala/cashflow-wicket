@@ -21,7 +21,6 @@ public class FormPage extends BasePage {
 
     private void initGui() {
         final BillModalFormPanel billModalFormPanel = new BillModalFormPanel("content");
-        billModalFormPanel.initGui();
         final ModalFormWindow<Bill> billFormWindow = new ModalFormWindow<Bill>("window", billModalFormPanel);
 
         add(new AjaxLink<Void>("showWindow") {

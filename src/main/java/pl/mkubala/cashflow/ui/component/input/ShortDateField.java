@@ -1,4 +1,4 @@
-package pl.mkubala.cashflow.ui.component;
+package pl.mkubala.cashflow.ui.component.input;
 
 import java.util.Date;
 
